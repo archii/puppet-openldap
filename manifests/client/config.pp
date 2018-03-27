@@ -162,9 +162,10 @@ class openldap::client::config {
     $tls_reqcert,
     $sudoers_base,
   ])
-  augeas { 'ldap.conf':
-    incl    => $::openldap::client::file,
-    lens    => 'Spacevars.lns',
-    changes => $changes,
-  }
+  -> notify {"DEBUG1: ${::openldap::client::file}": }
+  # -> augeas { 'ldap.conf':
+  #   incl    => $::openldap::client::file,
+  #   lens    => 'Spacevars.lns',
+  #   changes => $changes,
+  # }
 }
